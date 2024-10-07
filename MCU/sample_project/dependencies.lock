@@ -1,0 +1,21 @@
+dependencies:
+  espressif__led_strip:
+    component_hash: null
+    source:
+      path: C:\Users\23191\Desktop\sample_project\components\espressif__led_strip
+      type: local
+    version: 2.5.5
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.2.0
+  lvgl__lvgl:
+    component_hash: null
+    source:
+      path: C:\Users\23191\Desktop\sample_project\components\lvgl__lvgl
+      type: local
+    version: 8.4.0
+manifest_hash: 3bb220b6907405d24038e1c4471501b8204fa064936104a8af874a9ae78eba7d
+target: esp32s3
+version: 1.0.0

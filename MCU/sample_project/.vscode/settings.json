@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "power.h": "c",
+        "led_strip.h": "c",
+        "disp.h": "c",
+        "ui.h": "c",
+        "ble.h": "c",
+        "esp_lv_example_freetype.h": "c",
+        "4g.h": "c",
+        "ir_nec_encoder.h": "c",
+        "ui_events.h": "c",
+        "ir.h": "c"
+    }
+}

@@ -1,0 +1,54 @@
+<view class="container" style="height: 677rpx; display: flex; box-sizing: border-box; width: 750rpx">
+  <text style="font-size:medium;word-break:break-all">设备名称：{{name}}</text>
+  <text style="font-size:x-small;color:gray;word-break:break-all">设备ID：{{connectedDeviceId}}</text>
+  <text style="font-size:x-small;color:gray">状态：{{connected?"已连接":"已断开"}}</text>
+
+  <!-- 下拉选择框 -->
+  <picker bindchange="onPickerChange" value="{{selectedItem}}" range="{{items}}" style="width: 325rpx; display: block; box-sizing: border-box; position: relative; left: 2rpx; top: 0rpx; height: 58rpx">
+    <view style="width: 275rpx; display: block; box-sizing: border-box; height: 52rpx; left: 50rpx; top: 0rpx; position: relative">当前显示项：{{selectedItem}}</view>
+  </picker>
+  
+  <input style="height: 52rpx; display: block; box-sizing: border-box" class="input" model:value="{{inputText}}" bindinput="bindInput"  />
+
+  <view style="width: 508rpx; display: block; box-sizing: border-box">
+
+  
+  <!-- 滑块控件 -->
+  <slider bindchange="onSliderChange" min="1" max="255" step="1" show-value="{{true}}" value="{{playSpeed}}" style="width: 433rpx; display: block; box-sizing: border-box; position: relative; left: 3rpx; top: 0rpx"></slider>
+</view>
+
+  <button type="primary" class="button" bindtap="Send">发送</button>
+
+
+  
+  <view class="view-color-slider">
+  <view style="width:160rpx;height:160rpx;border-radius:80rpx;background:{{blockColor}}"></view>
+  <slider class="slider-color-picker" style="width:500rpx;height:30rpx;border-radius:10rpx;margin-left:30rpx" activeColor="transparent" backgroundColor="transparent" bindchange="changeCorlor" block-size="24" value="{{sliderValue}}"></slider>
+  <slider class="slider-color-picker-gamut" style="width:500rpx;height:30rpx;border-radius:10rpx;margin-left:30rpx;background:{{colorGamut}}" activeColor="transparent" backgroundColor="transparent" bindchange="changeCorlorGamut" block-size="24" value="{{sliderValue}}"></slider>
+  <slider class="slider-color-picker-gray" style="width:500rpx;height:30rpx;border-radius:10rpx;margin-left:30rpx;background:{{colorGray}}" activeColor="transparent" backgroundColor="transparent" bindchange="changeCorlorGray" block-size="24" value="{{sliderValue}}"></slider>
+</view>
+
+
+</view>
+  <view style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 10rpx;">
+    
+    <button style="width: 266rpx; height: 83rpx; display: block; box-sizing: border-box; left: -2rpx; top: 0rpx; position: relative" bindtap="getData">读取</button>
+    <button style="width: 266rpx; height: 83rpx; display: block; box-sizing: border-box; margin-left: 10rpx; left: 0rpx; top: 0rpx"bindtap="getAll">读取全部</button>
+  </view>
+
+
+<view class="container" style="position: relative; left: 0rpx; top: 24rpx; width: 750rpx; height: 450rpx; display: flex; box-sizing: border-box">
+  <scroll-view scroll-y style="width: 700rpx; height: 547rpx; display: block; box-sizing: border-box; left: 0rpx; top: -2rpx">
+    <block wx:for="{{devicesList}}" wx:key="deviceId">
+      <view class="list-item" id="{{item.deviceId}}">
+        <view style="display:flex;flex-direction:column;width:80%">
+          <input style="width: 491rpx; font-size: medium; word-break: break-all; display: block; box-sizing: border-box" value="{{item.data}}" bindinput="updateName" data-index="{{index}}"/>
+          <text style="font-size:x-small;color:gray;word-break:break-all">第{{item.deviceId}}条</text>
+        </view>
+        <button style="width:72px;height:36px;display:flex;justify-content:center;align-items:center;" bindtap="Connect">应用</button>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+<button type="warn"  style="position: relative; left: 309rpx; top: -1220rpx; width: 133rpx; display: block; box-sizing: border-box" bindtap="reset">重启</button>
+
